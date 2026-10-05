@@ -1,4 +1,5 @@
 'use client';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { Mail } from 'lucide-react';
@@ -8,12 +9,46 @@ const Instagram = ({ className }: { className?: string }) => (<svg xmlns="http:/
 
 
 
+
+export function Typewriter({ words }: { words: string[] }) {
+  const [i, setI] = useState(0);
+  const [text, setText] = useState('');
+  const [del, setDel] = useState(false);
+
+  useEffect(() => {
+    const word = words[i];
+    const done = text === word;
+    const delay = done && !del ? 1400 : del ? 35 : 70;
+    const t = setTimeout(() => {
+      if (done && !del) setDel(true);
+      else if (del && text === '') { setDel(false); setI((i + 1) % words.length); }
+      else setText(del ? word.slice(0, -1) : word.slice(0, text.length + 1));
+    }, delay);
+    return () => clearTimeout(t);
+  }, [text, del, i, words]);
+
+  return (
+    <p className="font-mono text-lg text-white/60">
+      <span className="text-emerald-400">$</span> {text}
+      <span className="animate-pulse text-violet-400">▍</span>
+    </p>
+  );
+}
+
+const ROLES = ['Generative AI Developer', 'Multi-agent LLM Builder', 'RAG Engineer', 'Full-stack Developer'];
+
 export function Hero() {
+  useEffect(() => {
+    console.log('%c👋 Hey, fellow dev!', 'font-size:16px;color:#8b5cf6');
+    console.log("Like what you see? Let's talk: anish.kumar@gmail.com");
+  }, []);
+
   return (
     <section className="relative flex min-h-screen items-center pb-16 pt-32">
+      <div className="absolute inset-0 -z-10 bg-grid" />
       <Container className="grid items-center gap-12 lg:grid-cols-2">
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-widest text-white/70">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs tracking-wider text-white/70">
             <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" /> Available for work
           </span>
           <h1 className="mt-6 text-5xl font-semibold leading-[1.05] tracking-tight md:text-7xl">
@@ -21,9 +56,7 @@ export function Hero() {
             <span className="bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">intelligent</span>{' '}
             systems.
           </h1>
-          <p className="mt-6 max-w-lg text-lg text-white/60">
-            Generative AI · Multi-agent LLMs · RAG · Full-stack
-          </p>
+          <div className="mt-6"><Typewriter words={ROLES} /></div>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a href="#work" className="rounded-full bg-white px-6 py-3 font-medium text-black transition-transform hover:scale-105">View Work</a>
             <button className="rounded-full border border-white/15 px-6 py-3 font-medium hover:bg-white/5 transition-colors" onClick={() => document.dispatchEvent(new CustomEvent('open-chat'))}>Ask my AI</button>
@@ -42,7 +75,7 @@ export function Hero() {
             <Image src="/anish.jpeg" alt="Anish Kumar" width={420} height={520} priority
                    className="h-auto w-full rounded-[1.25rem] object-cover" />
           </div>
-          <div className="absolute -left-6 top-12 rounded-full border border-white/10 bg-white/[0.05] backdrop-blur-md px-4 py-2 text-xs font-medium text-white shadow-xl animate-float-delayed">
+          <div className="absolute -left-6 top-12 rounded-full border border-white/10 bg-white/[0.05] backdrop-blur-md px-4 py-2 font-mono font-mono text-xs font-medium text-white shadow-xl animate-float-delayed">
             GenAI Engineer
           </div>
           <div className="absolute -right-6 bottom-24 rounded-full border border-white/10 bg-white/[0.05] backdrop-blur-md px-4 py-2 text-xs font-medium text-white shadow-xl animate-float-delayed-2">

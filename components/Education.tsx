@@ -19,7 +19,7 @@ export function Education() {
           >
             <span className="absolute -left-[calc(1.5rem+5px)] top-8 h-2.5 w-2.5 rounded-full bg-gradient-to-br from-violet-400 to-cyan-400 shadow-[0_0_12px_rgba(139,92,246,0.8)] md:-left-[calc(2.5rem+5px)]" />
             
-            <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
+            <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs text-white/70">
               {e.period}
             </span>
             <h3 className="mt-4 text-2xl font-semibold">{e.degree}</h3>

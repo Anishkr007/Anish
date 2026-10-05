@@ -1,4 +1,6 @@
+const fs = require('fs');
 
+let about = `
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { Section } from './ui/Section';
@@ -26,7 +28,7 @@ export function Terminal() {
     setInput('');
     if (!cmd) return;
     if (cmd === 'clear') return setLines([]);
-    setLines((l) => [...l, `$ ${cmd}`, ...(COMMANDS[cmd] ?? [`command not found: ${cmd}`])]);
+    setLines((l) => [...l, \`$ \${cmd}\`, ...(COMMANDS[cmd] ?? [\`command not found: \${cmd}\`])]);
   }
 
   return (
@@ -85,3 +87,5 @@ export function About() {
     </Section>
   );
 }
+`;
+fs.writeFileSync('components/About.tsx', about, 'utf8');

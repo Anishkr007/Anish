@@ -16,7 +16,7 @@ export function Skills() {
             </div>
             <div className="mt-6 flex flex-wrap gap-2">
               {s.items.map((item) => (
-                <span key={item} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/70">
+                <span key={item} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-sm text-white/70">
                   {item}
                 </span>
               ))}
@@ -28,7 +28,7 @@ export function Skills() {
          <h3 className="text-lg font-semibold whitespace-nowrap">Core CS</h3>
          <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
            {coreCS.map((c) => (
-              <span key={c} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/70">{c}</span>
+              <span key={c} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-sm text-white/70">{c}</span>
            ))}
          </div>
       </div>

@@ -14,9 +14,9 @@ export function ProjectCard({ p }: { p: Project }) {
       className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-colors hover:border-violet-400/40 md:p-8"
     >
       <div className="flex items-start justify-between">
-        <span className="text-5xl font-semibold text-white/10 transition-colors group-hover:text-white/20">{p.index}</span>
+        <span className="font-mono text-5xl font-semibold tracking-tighter text-white/10 transition-colors group-hover:text-white/20">{p.index}</span>
         {p.featured && (
-          <span className="rounded-full bg-violet-500/15 px-3 py-1 text-xs font-medium text-violet-300">Featured</span>
+          <span className="rounded-full bg-violet-500/15 px-3 py-1 font-mono text-xs font-medium text-violet-300">Featured</span>
         )}
       </div>
 
@@ -35,7 +35,7 @@ export function ProjectCard({ p }: { p: Project }) {
 
       <div className="mt-5 flex flex-wrap gap-2">
         {p.tags.map((t) => (
-          <span key={t} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">{t}</span>
+          <span key={t} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs text-white/70">{t}</span>
         ))}
       </div>
 
