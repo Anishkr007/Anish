@@ -52,7 +52,7 @@ export function Chatbot() {
         assistantMsg += decoder.decode(value, { stream: true });
         setMessages([...newMessages, { role: 'assistant', content: assistantMsg }]);
       }
-    } catch (err) {
+    } catch (err) { console.error(err);
       setMessages([...newMessages, { role: 'assistant', content: 'Oops! Something went wrong. Please try again.' }]);
     } finally {
       setIsLoading(false);

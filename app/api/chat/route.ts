@@ -1,7 +1,7 @@
 import OpenAI from 'openai';
 import { KNOWLEDGE } from '@/lib/knowledge';
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || 'dummy_build_key' });
 
 const SYSTEM = `You are the AI assistant on Anish Kumar's portfolio website.
 Answer ONLY using the information below. Speak about Anish in the third person,
